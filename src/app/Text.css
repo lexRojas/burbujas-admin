@@ -1,0 +1,21 @@
+.textcontainer {
+  display: flex;
+  justify-content: right;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.textmove {
+  display: inline-block;
+  animation: slideIn 1s steps(30) forwards;
+  transform: translateX(100%);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
