@@ -36,10 +36,4 @@ export async function GET(
       { status: 500 },
     );
   }
-
-  // export async function GET(
-  //   req: Request,
-  //   { params }: { params: { cedula: string } },
-  // ) {
-  //   const { cedula } = params;
 }
