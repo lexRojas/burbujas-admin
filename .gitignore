@@ -40,5 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-compras_clientes/
+compra_clientes/
 puntos_usados_clientes/ 
