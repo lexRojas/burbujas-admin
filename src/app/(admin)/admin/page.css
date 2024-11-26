@@ -1,0 +1,6 @@
+.logo {
+  padding: 2px;
+  max-width: 5rem;
+  height: auto;
+  filter: drop-shadow(1px 1px 3px rgba(214, 13, 13, 0.646));
+}

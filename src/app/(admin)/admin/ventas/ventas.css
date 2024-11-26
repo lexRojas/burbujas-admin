@@ -1,0 +1,21 @@
+@media (max-width: 768px) {
+  .layout {
+    display: grid;
+    grid-template-areas:
+      "fecha monto porcentaje"
+      "puntos puntos puntos";
+    gap: 1rem;
+  }
+  .fecha {
+    grid-area: fecha;
+  }
+  .monto {
+    grid-area: monto;
+  }
+  .porcentaje {
+    grid-area: porcentaje;
+  }
+  .puntos {
+    grid-area: puntos;
+  }
+}

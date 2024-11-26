@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["typedSql"]
+}
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  cedula      String    @id @unique
+  nombre      String
+  direccion   String 
+  correo      String
+  telefono    String
+  compras     ComprasCliente[]
+  puntosUsados PuntosUsadosCliente[]
+}
+
+model ComprasCliente {
+  id          Int       @id @default(autoincrement())
+  cedula      String
+  fecha       DateTime
+  montoCompra Float
+  puntos      Float
+  vencido     Boolean @default(false)
+  cliente     Cliente   @relation(fields: [cedula], references: [cedula], onDelete: Cascade)
+}
+
+model PuntosUsadosCliente {
+  id          Int       @id @default(autoincrement())
+  cedula      String
+  fecha       DateTime
+  montoCompra Float
+  puntosUsados Float
+  cliente     Cliente   @relation(fields: [cedula], references: [cedula], onDelete: Cascade)
+}
+
+model Usuario {
+  id       Int      @id @default(autoincrement())
+  nombre   String?
+  login    String   @unique  
+  password String
+  perfil   String?
+  activo   Boolean @default(true)
+}

@@ -1,0 +1,45 @@
+.bubble-animation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+
+  overflow: hidden;
+}
+
+.bubble-animation {
+  width: 5rem;
+  height: 5rem;
+  /* background: radial-gradient(circle at top right, #f0f8ff, #89cff0, #4682b4); */
+  background: radial-gradient(
+    circle at 70% 30%,
+    #ffffff7e,
+    #d1eaef93,
+    #a1d6df8c,
+    #6cc2cf7a,
+    #16acc083,
+    #00b0cf85,
+    #01519b7c,
+    #0178998c,
+    #00499c81
+  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(70, 130, 180, 0.5);
+}
+
+.number {
+  font-size: clamp(100%, 100%, 15rem);
+  color: rgb(255, 0, 0);
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .number {
+    color: rgb(238, 255, 0);
+  }
+}

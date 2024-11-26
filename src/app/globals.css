@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("../../public/fondo-min.webp"); /* Imagen como fondo */
+  background-size: cover; /* La imagen cubrirá toda la pantalla */
+  background-position: center; /* Centra la imagen */
+  background-repeat: no-repeat; /* No repite la imagen */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bubbles-container {
+  position: relative;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -50px;
+  width: 40px;
+  height: 40px;
+  /* background-color: rgba(14, 191, 245, 0.582); */
+  /* background: radial-gradient(closest-side at 65% 30%, #01c4ff5b, #01c4ff7e, #01e1ff7e, #01e1ff65); */
+  background: radial-gradient(
+    circle at 70% 30%,
+    #ffffff7e,
+    #d1eaef93,
+    #a1d6df8c,
+    #6cc2cf7a,
+    #16acc083,
+    #00b0cf85,
+    #00b6df7c,
+    #00bbef8c,
+    #00bfff88
+  ); /* made at https://learnui.design/tools/gradient-generator.html */
+  border-radius: 50%;
+  animation: float 7s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+/* Animación */
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-500px) scale(1.2);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-1000px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Estilos para variar el tamaño y la posición de las burbujas */
+.bubble:nth-child(1) {
+  left: 10%;
+  width: 30px;
+  height: 30px;
+  animation-duration: 12s;
+}
+
+.bubble:nth-child(2) {
+  left: 25%;
+  width: 50px;
+  height: 50px;
+  animation-duration: 15s;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  animation-duration: 10s;
+  animation-delay: 4s;
+}
+
+.bubble:nth-child(4) {
+  left: 70%;
+  width: 35px;
+  height: 35px;
+  animation-duration: 14s;
+  animation-delay: 6s;
+}
+
+.bubble:nth-child(5) {
+  left: 90%;
+  width: 25px;
+  height: 25px;
+  animation-duration: 13s;
+  animation-delay: 3s;
+}
+
+.img-luminosa {
+  filter: drop-shadow(0 0 3px rgba(44, 44, 44, 0.973));
+}
+
+.logo-luminoso {
+  filter: drop-shadow(0 0 3px rgba(44, 44, 44, 0.973));
+}
+
+.bar {
+  display: flex;
+  border-radius: 11px;
+  background: #0005a3;
+  box-shadow: inset 5px 5px 15px #000358, inset -5px -5px 15px #0007ee;
+  color: rgb(255, 255, 255);
+  padding: 7px;
+}
+
+.main-button-1 {
+  border-radius: 11px;
+  background: #eb008bff;
+  box-shadow: inset 5px 5px 10px rgb(241, 156, 206),
+    inset -5px -5px 10px rgb(134, 4, 80);
+  cursor: pointer;
+}
+
+.main-button-2 {
+  border-radius: 11px;
+  background: rgb(62, 145, 81);
+  box-shadow: inset 5px 5px 10px rgb(156, 241, 174),
+    inset -5px -5px 10px rgb(2, 77, 6);
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.main-button-3 {
+  border-radius: 11px;
+  background: rgb(252, 152, 3);
+  box-shadow: inset 5px 5px 10px rgb(252, 224, 101),
+    inset -5px -5px 10px rgb(134, 104, 4);
+  cursor: pointer;
+}
+
+.contenedor-carousel {
+  width: clamp(100px, 500px, 500px);
+  height: 40rem;
+  border-radius: 10px;
+  filter: drop-shadow(0 0 3px rgba(44, 44, 44, 0.973));
+  background-color: #5f5f5f;
+  border: 3px solid #ffffff;
+  overflow: hidden;
+}

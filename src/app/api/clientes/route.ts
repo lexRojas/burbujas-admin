@@ -1,0 +1,55 @@
+// pages/api/clientes.ts
+
+import prisma from "../../lib/prisma";
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  try {
+    const clientes = await prisma.cliente.findMany({
+      include: {
+        compras: true, // Incluir todas las compras relacionadas
+        puntosUsados: true, // Incluir todos los puntos usados
+      },
+    });
+    return NextResponse.json(clientes, { status: 200 });
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({ error: "No hay clientes " }, { status: 500 });
+  }
+}
+
+export async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const { cedula, nombre, direccion, correo, telefono } = body;
+
+    console.log("salvando datos...");
+
+    if (!cedula || !nombre) {
+      return NextResponse.json(
+        { error: "Los campos cedula y nombre son obligatorios" },
+        { status: 400 },
+      );
+    }
+
+    const cliente = await prisma.cliente.create({
+      data: { cedula, nombre, direccion, correo, telefono },
+    });
+
+    return NextResponse.json(cliente, { status: 201 });
+  } catch (error) {
+    console.error("Error al crear un cliente", error);
+
+    return NextResponse.json(
+      { error: "No fue posible crear cliente" },
+      { status: 500 },
+    );
+  }
+}
+// Manejar otros métodos HTTP no soportados
+export async function DELETE() {
+  return NextResponse.json(
+    { error: "DELETE no está soportado en esta ruta" },
+    { status: 405 },
+  );
+}
