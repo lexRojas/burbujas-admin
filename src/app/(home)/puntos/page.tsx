@@ -34,13 +34,13 @@ export default function Component() {
         const response = await fetch(`/api/saldo_puntos/${cedula}`)
 
         if (response.ok) {
-            const saldo: typeSaldopuntos[] = await response.json()
+            const misaldo: typeSaldopuntos[] = await response.json()
 
-            console.log(saldo)
+            console.log(misaldo)
 
-            if (saldo.length > 0) {
+            if (misaldo) {
 
-                setPuntos(saldo[0].saldo)
+                setPuntos(misaldo.saldo)
                 setVerAnimacion(true)
                 setCaraTriste(false)
             } else {

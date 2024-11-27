@@ -19,10 +19,18 @@ export async function GET(
     }
 
     try {
-      const saldo: typeSaldopuntos[] = await prisma.$queryRawTyped(
-        saldopuntos(cedula),
-      );
-      return NextResponse.json(saldo, { status: 200 });
+      const saldoraw = await prisma.$queryRawTyped(saldopuntos(cedula));
+
+      const { nombre, total_puntos, total_puntos_usados, saldo } = saldoraw[0];
+
+      const nuevoSaldo: typeSaldopuntos = {
+        cedula: cedula,
+        nombre: nombre,
+        total_puntos: total_puntos.toNumber(),
+        total_puntos_usados: total_puntos_usados.toNumber(),
+        saldo: saldo.toNumber(),
+      };
+      return NextResponse.json(nuevoSaldo, { status: 200 });
     } catch (error) {
       console.error("Error al obtener usuarios:", error);
       return NextResponse.json(
