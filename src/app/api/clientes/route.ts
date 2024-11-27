@@ -24,6 +24,7 @@ export async function POST(req: Request) {
     const { cedula, nombre, direccion, correo, telefono } = body;
 
     console.log("salvando datos...");
+    console.log(body);
 
     if (!cedula || !nombre) {
       return NextResponse.json(
@@ -36,7 +37,12 @@ export async function POST(req: Request) {
       data: { cedula, nombre, direccion, correo, telefono },
     });
 
-    return NextResponse.json(cliente, { status: 201 });
+    return NextResponse.json(cliente, {
+      status: 201,
+      headers: {
+        "Cache-Control": "no-store", // Esto evita que se almacene en caché la respuesta
+      },
+    });
   } catch (error) {
     console.error("Error al crear un cliente", error);
 

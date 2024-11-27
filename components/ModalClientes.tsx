@@ -61,6 +61,8 @@ function ModalClientes(props: ModalClienteProps) {
             const response = await fetch('/api/clientes');
             const clientes = await response.json();
 
+            console.log(clientes)
+
             setClientes(clientes)
             setFilter_Clientes(clientes)
 
@@ -72,6 +74,10 @@ function ModalClientes(props: ModalClienteProps) {
 
         }
     }, [])
+
+    if (!show) {
+        return null;
+    }
 
     return (
         <Modal show={show} onClose={onClose}>

@@ -10,8 +10,9 @@ import { Datepicker, Table } from "flowbite-react";
 import './ventas.css'
 import ModalClientes from "../../../../../components/ModalClientes";
 import { ClienteConRelaciones } from "../../../lib/modelos";
-import { convertDateToDDMMYYY } from "@/tools";
-
+import { convertDateToYYYYMMDD, convertDateToDDMMYYYY } from "@/tools";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto_Condensed({
   style: 'normal',
@@ -41,21 +42,18 @@ export default function Home() {
   const [clienteNoExiste, setclienteNoExiste] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [comprasCliente, setcomprasCliente] = useState<ClienteConRelaciones | undefined>();
+  const [fechaselected, SetFechaSelected] = useState<Date | null>(new Date())
 
 
   const handleDateChanges = (date: Date | null) => {
 
     if (date) {
 
+      // const formattedDate = `${date.getFullYear()}-${String(
+      //   date.getMonth() + 1
+      // ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
 
-
-      const formattedDate = `${date.getFullYear()}-${String(
-        date.getMonth() + 1
-      ).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-
-
-      const newDataForm = { ...dataForm, fecha: formattedDate }
-      setDataForm(newDataForm)
+      SetFechaSelected(date)
     }
   }
 
@@ -98,28 +96,70 @@ export default function Home() {
 
   }
 
-  const guardarDatos = () => {
+  const guardarDatos = async () => {
 
 
     if (clienteValidado) {
 
 
-      // const compras: ComprasCliente = {
+      const compras = {
+        cedula: dataForm.cedula,
+        fecha: fechaselected!,
+        montoCompra: dataForm.monto_compra,
+        puntos: dataForm.puntos,
+        vencido: false
+      }
 
-      //   cedula: dataForm.cedula.toString(),
-      //   fecha: dataForm.fecha,
-      //   monto_compra: dataForm.monto_compra,
-      //   puntos: dataForm.puntos,
-      //   vencidos: 0
+      console.log(compras)
 
-      // }
+      try {
 
-      // saveComprasCliente(compras).then((res) => {
+        const response = await fetch('/api/compra_clientes', {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(compras)
+        })
 
-      //   console.log(res)
 
-      // })
+        if (response.ok) {
 
+          buscarCliente(dataForm.cedula)
+
+
+          toast.success('Compra incluida ! ', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce
+          });
+        } else {
+
+          console.log(response.statusText)
+
+
+        }
+      } catch (error) {
+
+        toast.error('Compra NO incluida ! ', {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce
+        });
+
+      }
 
 
 
@@ -129,14 +169,15 @@ export default function Home() {
 
     }
 
-
-
     if (dataForm.monto_compra <= 0) {
       setmontoIncorrecto(true)
     }
 
 
   }
+
+
+
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key == 'Enter') {
       buscarCliente(dataForm.cedula)
@@ -237,6 +278,8 @@ export default function Home() {
 
     <div className="flex flex-col max-w-5xl m-auto bg-white bg-opacity-60 sm:w-full rounded-md border-solid border-2 border-green-700 p-4">
 
+      <ToastContainer />
+
       <div className="m-2 block ">
         <p className={`${roboto.className} p-1  text-xl text-center  text-blue-700 `}>REGISTRO DE VENTAS A CLIENTES</p>
       </div>
@@ -275,7 +318,9 @@ export default function Home() {
           <div className=" block mt-2">
             <Label htmlFor="login">Fecha compra: </Label>
           </div>
-          <Datepicker onChange={handleDateChanges} />
+          <Datepicker
+            value={fechaselected}
+            onChange={handleDateChanges} />
 
         </div>
         <div className="monto">
@@ -317,10 +362,10 @@ export default function Home() {
 
       </div>
 
-      <div className="overflow-x-auto my-4">
+      <div className="overflow-x-auto my-4 max-h-64 ">
 
         <Table hoverable>
-          <Table.Head>
+          <Table.Head className="sticky top-0 z-10">
             <Table.HeadCell>Fecha</Table.HeadCell>
             <Table.HeadCell>Monto Compra</Table.HeadCell>
             <Table.HeadCell>Puntos</Table.HeadCell>
@@ -332,9 +377,9 @@ export default function Home() {
             {comprasCliente && comprasCliente.compras.map((compras) => (
 
               <Table.Row key={compras.id} className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell>{convertDateToDDMMYYY(compras.fecha)} </Table.Cell>
-                <Table.Cell>{compras.montoCompra} </Table.Cell>
-                <Table.Cell>{compras.puntos} </Table.Cell>
+                <Table.Cell>{convertDateToDDMMYYYY(compras.fecha)} </Table.Cell>
+                <Table.Cell>{compras.montoCompra.toString()} </Table.Cell>
+                <Table.Cell>{compras.puntos.toString()} </Table.Cell>
                 <Table.Cell className={compras.vencido ? 'text-red-700 font-bold animate-pulse' : 'text-green-700 font-bold '} >{compras.vencido ? 'Vencido!' : 'Vigentes'} </Table.Cell>
                 <Table.Cell>
                   <p>Editar</p>
@@ -348,11 +393,11 @@ export default function Home() {
         </Table>
       </div>
 
-      <ModalClientes
+      {openModal && <ModalClientes
         onClose={handleClose}
         resolveSelection={handleResolve}
         show={openModal}
-      />
+      />}
 
       <div className="grid grid-cols-2 p-4 gap-3">
         <Button onClick={guardarDatos}> Guardar </Button>
