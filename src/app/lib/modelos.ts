@@ -1,5 +1,4 @@
 import { Cliente, ComprasCliente, PuntosUsadosCliente } from "@prisma/client";
-import { Decimal } from "@prisma/client/runtime/library";
 export interface ClienteConRelaciones extends Cliente {
   compras: ComprasCliente[];
   puntosUsados: PuntosUsadosCliente[];
