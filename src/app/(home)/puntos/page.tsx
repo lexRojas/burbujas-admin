@@ -34,7 +34,7 @@ export default function Component() {
         const response = await fetch(`/api/saldo_puntos/${cedula}`)
 
         if (response.ok) {
-            const misaldo: typeSaldopuntos[] = await response.json()
+            const misaldo: typeSaldopuntos = await response.json()
 
             console.log(misaldo)
 
