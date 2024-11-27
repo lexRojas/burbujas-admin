@@ -10,7 +10,7 @@ import { Datepicker, Table } from "flowbite-react";
 import './ventas.css'
 import ModalClientes from "../../../../../components/ModalClientes";
 import { ClienteConRelaciones } from "../../../lib/modelos";
-import { convertDateToYYYYMMDD, convertDateToDDMMYYYY } from "@/tools";
+import { convertDateToDDMMYYYY } from "@/tools";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -147,7 +147,7 @@ export default function Home() {
         }
       } catch (error) {
 
-        toast.error('Compra NO incluida ! ', {
+        toast.error('Compra NO incluida ! ' + error, {
           position: "top-center",
           autoClose: 3000,
           hideProgressBar: false,
