@@ -40,15 +40,15 @@ export async function POST(request: Request) {
       );
     }
 
-    // const monto = parseFloat(montoCompra.toString()); // Asegúrate de que sea un número
-    // const punto = parseFloat(puntos.toString());
+    const monto_int = parseInt(montoCompra.toString()); // Asegúrate de que sea un número
+    const punto_int = parseInt(puntos.toString());
 
     const compras = await prisma.comprasCliente.create({
       data: {
         cedula,
         fecha,
-        montoCompra,
-        puntos,
+        montoCompra: monto_int,
+        puntos: punto_int,
         vencido,
       },
     });

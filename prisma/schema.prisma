@@ -21,8 +21,8 @@ model ComprasCliente {
   id          Int       @id @default(autoincrement())
   cedula      String
   fecha       DateTime
-  montoCompra Decimal
-  puntos      Decimal
+  montoCompra Int
+  puntos      Int
   vencido     Boolean @default(false)
   cliente     Cliente   @relation(fields: [cedula], references: [cedula], onDelete: Cascade)
 }
@@ -31,8 +31,8 @@ model PuntosUsadosCliente {
   id          Int       @id @default(autoincrement())
   cedula      String
   fecha       DateTime
-  montoCompra Decimal
-  puntosUsados Decimal
+  montoCompra Int
+  puntosUsados Int
   cliente     Cliente   @relation(fields: [cedula], references: [cedula], onDelete: Cascade)
 }
 

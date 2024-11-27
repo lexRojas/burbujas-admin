@@ -8,7 +8,7 @@ export interface ClienteConRelaciones extends Cliente {
 export interface typeSaldopuntos {
   cedula: string;
   nombre: string;
-  total_puntos: Decimal;
-  total_puntos_usados: Decimal;
-  saldo: Decimal;
+  total_puntos: number;
+  total_puntos_usados: number;
+  saldo: number;
 }
