@@ -5,7 +5,6 @@ import { useState } from "react";
 import BubbleAnimation from "../../../../components/BurbujaPuntos";
 import { useRouter } from "next/navigation";
 import { typeSaldopuntos } from "@/app/lib/modelos";
-import { Decimal } from "@prisma/client/runtime/library";
 
 
 
