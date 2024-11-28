@@ -9,7 +9,5 @@
     "next",
     "@typescript-eslint" // Asegúrate de que el plugin de Next.js esté activo
   ],
-  "rules": {
-    // Puedes agregar reglas personalizadas aquí si es necesario
-  }
+  "rules": {}
 }
