@@ -2,8 +2,9 @@
   .layout {
     display: grid;
     grid-template-areas:
-      "fecha monto porcentaje"
-      "puntos puntos puntos";
+      "fecha fecha"
+      "monto porcentaje"
+      "puntos puntos";
     gap: 1rem;
   }
   .fecha {

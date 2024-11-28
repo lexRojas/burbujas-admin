@@ -10,6 +10,7 @@ import { Datepicker, Table } from "flowbite-react";
 import './ventas.css'
 import ModalClientes from "../../../../../components/ModalClientes";
 import { ClienteConRelaciones } from "../../../lib/modelos";
+import { Cliente } from "@prisma/client";
 import { convertDateToDDMMYYYY } from "@/tools";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -233,15 +234,16 @@ export default function Home() {
 
 
   const handleClose = () => setOpenModal(false);
-  const handleResolve = (cliente: ClienteConRelaciones) => {
+  const handleResolve = (clienteList: Cliente) => {
 
-    dataForm.cedula = cliente.cedula;
-    dataForm.nombre = cliente.nombre;
+    dataForm.cedula = clienteList.cedula;
+    dataForm.nombre = clienteList.nombre;
 
     setOpenModal(false)
     setclienteValidado(true)
 
-    setcomprasCliente(cliente)
+    buscarCliente(clienteList.cedula)
+
   }
 
 
@@ -271,6 +273,33 @@ export default function Home() {
 
     }
   }
+
+  const eliminarCompra = async (id: number) => {
+    console.log(id)
+
+    try {
+      const response = await fetch(`/api/compra_clientes/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+
+      })
+
+      if (response.ok) {
+        console.log('elinado')
+        buscarCliente(dataForm.cedula)
+      }
+
+    } catch (error) {
+
+      console.log(error)
+
+
+    }
+
+  }
+
 
 
   return (
@@ -382,7 +411,8 @@ export default function Home() {
                 <Table.Cell>{compras.puntos.toString()} </Table.Cell>
                 <Table.Cell className={compras.vencido ? 'text-red-700 font-bold animate-pulse' : 'text-green-700 font-bold '} >{compras.vencido ? 'Vencido!' : 'Vigentes'} </Table.Cell>
                 <Table.Cell>
-                  <p>Editar</p>
+                  <p onClick={() => eliminarCompra(compras.id)}
+                    className=" border rounded-xl cursor-pointer bg-blue-900 hover:bg-red-600 text-white font-bold text-center ">Borrar</p>
                 </Table.Cell>
               </Table.Row>
 

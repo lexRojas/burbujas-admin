@@ -1,4 +1,15 @@
 {
-  "extends": ["next/core-web-vitals", "next/typescript"]
-
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next", // Establece la configuración predeterminada de Next.js
+    "next/core-web-vitals", // Establece reglas relacionadas con el rendimiento y las métricas de Next.js
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "next",
+    "@typescript-eslint" // Asegúrate de que el plugin de Next.js esté activo
+  ],
+  "rules": {
+    // Puedes agregar reglas personalizadas aquí si es necesario
+  }
 }

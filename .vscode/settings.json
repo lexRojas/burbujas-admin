@@ -1,5 +1,7 @@
 {
   "workbench.editor.labelFormat": "medium",
   "editor.wordWrap": "on",
-  "html.format.wrapAttributes": "force-aligned"
+  "html.format.wrapAttributes": "force-aligned",
+  "WillLuke.nextjs.addTypesOnSave": true,
+  "WillLuke.nextjs.hasPrompted": true
 }

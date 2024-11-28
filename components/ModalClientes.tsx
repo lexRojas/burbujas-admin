@@ -58,7 +58,7 @@ function ModalClientes(props: ModalClienteProps) {
     useEffect(() => {
 
         const getData = async () => {
-            const response = await fetch('/api/clientes');
+            const response = await fetch('/api/clientesList');
             const clientes = await response.json();
 
             console.log(clientes)

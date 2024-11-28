@@ -74,7 +74,7 @@ export default function Home() {
   return (
 
 
-    <div className="flex flex-col max-w-md m-auto bg-white bg-opacity-60 sm:w-full rounded-md border-solid border-2 border-green-700 ">
+    <div className="flex flex-col w-full md:w-3/4 m-auto bg-white bg-opacity-60  rounded-md border-solid border-2 border-green-700 p-4">
 
       <div className="m-2 block ">
         <p className={`${roboto.className} p-1  text-xl text-center  text-blue-700 `}>INGRESE SUS DATOS DE USUARIO</p>
