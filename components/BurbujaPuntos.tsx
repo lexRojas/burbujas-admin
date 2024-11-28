@@ -29,7 +29,12 @@ const BubbleAnimation = (props: Props) => {
 
                 setNumber(count)
 
-                totalPuntos = totalPuntos + incremento
+
+                if (count == 150) {
+                    totalPuntos = puntos
+                } else {
+                    totalPuntos = totalPuntos + incremento
+                }
 
                 setNumber(Math.floor(totalPuntos))
 
