@@ -1,24 +1,24 @@
-
-
 import Link from "next/link";
-import MyCarousel from "../../../components/MyCarousel";
+// import MyCarousel from "../../../components/MyCarousel";
+import Animate from "../../../components/Animation";
 
 export default function Home() {
 
 
 
-  const imageLinks = [
-    { id: 0, src: "/stock/image1.webp", link: 'https://example.com/1' },
-    { id: 1, src: "/stock/image2.webp", link: 'https://example.com/1' },
-    { id: 2, src: "/stock/image3.webp", link: 'https://example.com/1' },
-    { id: 3, src: "/stock/image4.webp", link: 'https://example.com/1' },
-  ];
+  // const imageLinks = [
+  //   { id: 0, src: "/stock/image1.webp", link: 'https://example.com/1' },
+  //   { id: 1, src: "/stock/image2.webp", link: 'https://example.com/1' },
+  //   { id: 2, src: "/stock/image3.webp", link: 'https://example.com/1' },
+  //   { id: 3, src: "/stock/image4.webp", link: 'https://example.com/1' },
+  // ];
 
   return (
     <>
 
-      <div className="container relative flex max-w-96 mx-auto px-3">
-        <MyCarousel images={imageLinks} />
+      <div className="container relative  max-w-7xl mx-auto px-3">
+        {/* <MyCarousel images={imageLinks} /> */}
+        <Animate></Animate>
       </div>
       <div className="flex flex-col gap-3 md:flex-row ">
         <div className="flex items-center 

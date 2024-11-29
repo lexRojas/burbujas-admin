@@ -5,10 +5,15 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url("../../public/fondo-min.webp"); /* Imagen como fondo */
-  background-size: cover; /* La imagen cubrirá toda la pantalla */
-  background-position: center; /* Centra la imagen */
-  background-repeat: no-repeat; /* No repite la imagen */
+
+  /* 
+  background-image: url("../../public/fondo-min.webp"); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+   */
+
+  background-color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -108,7 +113,9 @@ body {
   display: flex;
   border-radius: 11px;
   background: #0005a3;
-  box-shadow: inset 5px 5px 15px #000358, inset -5px -5px 15px #0007ee;
+  box-shadow:
+    inset 5px 5px 15px #000358,
+    inset -5px -5px 15px #0007ee;
   color: rgb(255, 255, 255);
   padding: 7px;
 }
@@ -116,7 +123,8 @@ body {
 .main-button-1 {
   border-radius: 11px;
   background: #eb008bff;
-  box-shadow: inset 5px 5px 10px rgb(241, 156, 206),
+  box-shadow:
+    inset 5px 5px 10px rgb(241, 156, 206),
     inset -5px -5px 10px rgb(134, 4, 80);
   cursor: pointer;
 }
@@ -124,7 +132,8 @@ body {
 .main-button-2 {
   border-radius: 11px;
   background: rgb(62, 145, 81);
-  box-shadow: inset 5px 5px 10px rgb(156, 241, 174),
+  box-shadow:
+    inset 5px 5px 10px rgb(156, 241, 174),
     inset -5px -5px 10px rgb(2, 77, 6);
   color: whitesmoke;
   cursor: pointer;
@@ -133,7 +142,8 @@ body {
 .main-button-3 {
   border-radius: 11px;
   background: rgb(252, 152, 3);
-  box-shadow: inset 5px 5px 10px rgb(252, 224, 101),
+  box-shadow:
+    inset 5px 5px 10px rgb(252, 224, 101),
     inset -5px -5px 10px rgb(134, 104, 4);
   cursor: pointer;
 }
