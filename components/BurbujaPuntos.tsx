@@ -54,7 +54,7 @@ const BubbleAnimation = (props: Props) => {
             } else {
                 clearInterval(interval);
             }
-        }, 50); // Velocidad de incremento
+        }, 10); // Velocidad de incremento
         return () => {
             clearInterval(interval)
         }

@@ -48,7 +48,7 @@ export async function GET(
         const token = await new SignJWT({ usuario: login }) // Define el payload
           .setProtectedHeader({ alg: "HS256" }) // Especificamos el algoritmo
           .setIssuedAt() // Marca el tiempo de emisión
-          .setExpirationTime("1m") // El token expira en 1 hora
+          .setExpirationTime("3h") // El token expira en 1 hora
           .sign(secret); // Firmamos el JWT con la clave secreta
 
         const cookieStore = await cookies();
@@ -59,7 +59,7 @@ export async function GET(
           httpOnly: true,
           secure: process.env.NODE_ENV == "production",
           sameSite: "strict",
-          maxAge: 1000 * 60 * 60,
+          maxAge: 1000 * 60 * 60 * 24,
         });
 
         return NextResponse.json(usuario, { status: 200 });

@@ -113,7 +113,7 @@ export default function Home() {
         <div className="block mt-2">
           <Label htmlFor="password">Digite su clave de acceso: </Label>
         </div>
-        <TextInput onChange={handleChanges} value={dataForm.password} name="password" placeholder="**********" required type="password" />
+        <TextInput onChange={handleChanges} value={dataForm.password} name="password" placeholder="Digite su clave" required type="password" />
 
 
 

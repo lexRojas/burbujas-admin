@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Card, Label, Modal, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BubbleAnimation from "../../../../components/BurbujaPuntos";
 import { useRouter } from "next/navigation";
 import { typeSaldopuntos } from "@/app/lib/modelos";
@@ -18,6 +18,13 @@ export default function Component() {
 
 
     const navegate = useRouter()
+
+    useEffect(() => {
+        const storedCedula = localStorage.getItem('cedula');
+        if (storedCedula) {
+            setCedula(storedCedula);
+        }
+    }, []);
 
 
     function onCloseModal() {
@@ -36,7 +43,7 @@ export default function Component() {
         if (response.ok) {
             const misaldo: typeSaldopuntos = await response.json()
 
-            console.log(misaldo)
+            localStorage.setItem('cedula', cedula);
 
             if (misaldo) {
 
@@ -109,7 +116,7 @@ export default function Component() {
                 {verAnimacion && <BubbleAnimation puntos={puntos} />}
 
                 {verCaraTriste && <>
-                    <p className="mx-auto font-bold text-red-600  pb-3  animate-bounce ">No tienes puntos</p>
+                    <p className="mx-auto font-bold text-red-600  pb-3  animate-bounce ">No tienes puntos aun!</p>
                     <video loop autoPlay>
                         <source src='/media/emojis_llorando.mp4' type="video/mp4" />
                     </video>
