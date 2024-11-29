@@ -6,8 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "prisma generate --sql && next build",
     "start": "next start",
-    "lint": "next lint",
-    "seed": "node -r dotenv/config ./scripts/crear_modelo.js"
+    "lint": "next lint"
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
