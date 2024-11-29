@@ -1,14 +1,14 @@
 'use client'
 
-import happy from './../scripts/animation_text.js'
+import animation_text from './../scripts/animation_text.js'
 import { useEffect } from 'react'
 
 
 export default function Animate() {
 
     useEffect(() => {
-        happy()
-        window.addEventListener('resize', happy);
+        animation_text()
+        window.addEventListener('resize', animation_text);
         return () => {
 
         }
