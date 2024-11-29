@@ -1,6 +1,6 @@
 'use client'
 
-import happy from '@/../scripts/animatio_text.js'
+import happy from './../scripts/animation_text.js'
 import { useEffect } from 'react'
 
 
