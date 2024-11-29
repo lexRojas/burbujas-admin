@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { verificarAcceso } from "../../lib/data";
 import '@/app/(admin)/admin/page.css'
 
+
 import Image from "next/image";
 
 import denegado from '@/../public/images/denegado.png'
@@ -22,6 +23,7 @@ const roboto = Roboto_Condensed({
 
 export default function Home() {
 
+
   const navegate = useRouter()
   const [accessDenegate, setAccessDenegate] = useState(false)
   const [userDontExist, setuserDontExist] = useState(false)
@@ -30,7 +32,6 @@ export default function Home() {
     login: '',
     password: '',
   })
-
 
   const handleChanges = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, type, value } = e.target;
@@ -47,13 +48,21 @@ export default function Home() {
 
   const verificarUsuario = async () => {
 
-    const response = await fetch(`/api/usuarios/${dataForm.login}`);
+
+
+
+    const response = await fetch(`/api/login/${dataForm.login}/${dataForm.password}`);
     const user = await response.json();
     if (user) {
 
       verificarAcceso(dataForm.password, user.password).then((acceso) => {
 
         if (acceso) {
+
+
+
+
+
           navegate.push("/admin/menu")
         } else {
           setAccessDenegate(true)

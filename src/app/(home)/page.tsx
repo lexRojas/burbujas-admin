@@ -5,6 +5,8 @@ import MyCarousel from "../../../components/MyCarousel";
 
 export default function Home() {
 
+
+
   const imageLinks = [
     { id: 0, src: "/stock/image1.webp", link: 'https://example.com/1' },
     { id: 1, src: "/stock/image2.webp", link: 'https://example.com/1' },
