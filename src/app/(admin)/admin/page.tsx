@@ -10,7 +10,7 @@ import '@/app/(admin)/admin/page.css'
 
 import Image from "next/image";
 
-import denegado from '@/../public/images/denegado.png'
+import denegado from '@/../public/images/denegado.webp'
 
 const roboto = Roboto_Condensed({
   style: 'normal',

@@ -5,10 +5,10 @@ import Image from "next/image";
 import { Roboto_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 
-import menu_compras from '@/../public/images/menu_compras.png'
-import menu_promocion from '@/../public/images/menu_promocion.png'
-import menu_usuarios from '@/../public/images/menu_usuarios.png'
-import menu_buy from '@/../public/images/menu_buy.png'
+import menu_compras from '@/../public/images/menu_compras.webp'
+import menu_promocion from '@/../public/images/menu_promocion.webp'
+import menu_usuarios from '@/../public/images/menu_usuarios.webp'
+import menu_buy from '@/../public/images/menu_buy.webp'
 
 
 import './menu.css'

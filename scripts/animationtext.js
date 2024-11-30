@@ -373,7 +373,8 @@ export default function AnimationText() {
   function anim() {
     window.requestAnimationFrame(anim);
 
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "rgba(255, 255, 255, 0.1)"; // Negro completamente transparente
+
     ctx.fillRect(0, 0, w, h);
 
     ctx.translate(hw, hh);

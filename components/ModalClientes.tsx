@@ -1,7 +1,7 @@
 import { ClienteConRelaciones } from "@/app/lib/modelos";
 import { Button, Modal, Table, TextInput } from "flowbite-react"
 import { ChangeEvent, useEffect, useState } from "react"
-import check from '@/../public/images/check.svg'
+import check from '@/../public/images/check.webp'
 import Image from "next/image";
 
 

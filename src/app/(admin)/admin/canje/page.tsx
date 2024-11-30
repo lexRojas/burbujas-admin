@@ -5,7 +5,7 @@ import { Label, HR, TextInput, Button, FlowbiteTextInputTheme } from "flowbite-r
 import { Roboto_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import lupa from '@/../public/images/lupa.svg'
+import lupa from '@/../public/images/lupa.webp'
 import { Datepicker, Table } from "flowbite-react";
 import ModalClientes from "../../../../../components/ModalClientes";
 import { ClienteConRelaciones } from "../../../lib/modelos";
@@ -368,9 +368,9 @@ export default function Home() {
                 theme={my_input_theme}
                 color={clienteNoExiste ? "failure" : "success"}
               />
-              <div className="flex justify-center align-middle bg-slate-300 rounded-r-md cursor-pointer hover:bg-cyan-600 "
+              <div className="flex justify-center p-3 h-[2.7rem]  border-green-700 border  align-middle bg-slate-300 rounded-r-md cursor-pointer hover:bg-cyan-600 "
                 onClick={() => setOpenModal(true)}>
-                <Image src={lupa} width={20} alt="lupa" />
+                <Image src={lupa} width={50} height={50} alt="lupa" />
               </div>
             </div>
             {clienteNoExiste ? <span className="mt-1  text-red-600 font-bold  text-xs">Cliente no existe!</span> : <></>}

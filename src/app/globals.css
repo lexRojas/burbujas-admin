@@ -6,99 +6,14 @@ body {
   margin: 0;
   padding: 0;
 
-  /* 
-  background-image: url("../../public/fondo-min.webp"); 
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
-   */
+  background-image: url("../../public/fondo-min.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  background-color: black;
+  /* background-color: black; */
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.bubbles-container {
-  position: relative;
-}
-
-.bubble {
-  position: absolute;
-  bottom: -50px;
-  width: 40px;
-  height: 40px;
-  /* background-color: rgba(14, 191, 245, 0.582); */
-  /* background: radial-gradient(closest-side at 65% 30%, #01c4ff5b, #01c4ff7e, #01e1ff7e, #01e1ff65); */
-  background: radial-gradient(
-    circle at 70% 30%,
-    #ffffff7e,
-    #d1eaef93,
-    #a1d6df8c,
-    #6cc2cf7a,
-    #16acc083,
-    #00b0cf85,
-    #00b6df7c,
-    #00bbef8c,
-    #00bfff88
-  ); /* made at https://learnui.design/tools/gradient-generator.html */
-  border-radius: 50%;
-  animation: float 7s infinite;
-  animation-timing-function: ease-in-out;
-}
-
-/* Animación */
-@keyframes float {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(-500px) scale(1.2);
-    opacity: 0.7;
-  }
-  100% {
-    transform: translateY(-1000px) scale(1);
-    opacity: 0;
-  }
-}
-
-/* Estilos para variar el tamaño y la posición de las burbujas */
-.bubble:nth-child(1) {
-  left: 10%;
-  width: 30px;
-  height: 30px;
-  animation-duration: 12s;
-}
-
-.bubble:nth-child(2) {
-  left: 25%;
-  width: 50px;
-  height: 50px;
-  animation-duration: 15s;
-  animation-delay: 2s;
-}
-
-.bubble:nth-child(3) {
-  left: 50%;
-  width: 40px;
-  height: 40px;
-  animation-duration: 10s;
-  animation-delay: 4s;
-}
-
-.bubble:nth-child(4) {
-  left: 70%;
-  width: 35px;
-  height: 35px;
-  animation-duration: 14s;
-  animation-delay: 6s;
-}
-
-.bubble:nth-child(5) {
-  left: 90%;
-  width: 25px;
-  height: 25px;
-  animation-duration: 13s;
-  animation-delay: 3s;
+  overflow: hidden;
 }
 
 .img-luminosa {

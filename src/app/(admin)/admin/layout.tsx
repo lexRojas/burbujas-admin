@@ -4,9 +4,9 @@ import "../../globals.css";
 import Image from "next/image";
 import burbujas from "../../../../public/burbujas-logo.webp"
 
-import whatsap from "../../../../public/whatsapp.png"
-import instagram from "../../../../public/instagram.png"
-import facebook from "../.././../../public/facebook.png"
+import whatsap from "../../../../public/whatsapp.webp"
+import instagram from "../../../../public/instagram.webp"
+import facebook from "../.././../../public/facebook.webp"
 import "../../Text.css"
 import { DarkThemeToggle } from "flowbite-react";
 
