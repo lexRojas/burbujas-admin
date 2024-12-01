@@ -278,7 +278,7 @@ export default function Home() {
   }
 
   const eliminarCompra = async (id: number) => {
-    console.log(id)
+
 
     try {
       const response = await fetch(`/api/puntos_usados_clientes/${id}`, {
@@ -343,7 +343,7 @@ export default function Home() {
 
 
   return (
-    <div className="grid grid-rows-2 w-full m-0  md:grid-cols-[70%_30%] md:max-w-3xl md:m-auto md:gap-3">
+    <div className="grid grid-rows-[1fr,auto] gap-5 w-full m-0 h-auto  md:grid-cols-[70%_30%] md:max-w-3xl md:m-auto md:gap-3">
 
       <div className="flex flex-col w-full  m-auto bg-red-300 bg-opacity-60  rounded-md border-solid border-2 border-green-700 p-4">
 
@@ -405,8 +405,13 @@ export default function Home() {
           </div>
 
         </div>
+        <div className="grid grid-cols-2 p-4 gap-3">
+          <Button onClick={guardarDatos}> Guardar </Button>
+          <Button onClick={() => navegate.push("/admin/menu")}> Cancelar </Button>
+        </div>
 
-        <div className="overflow-x-auto my-4 max-h-64 ">
+        <div className="text-center pt-4  font-bold text-blue-800 "> HISTORICO DE CANJES DEL CLIENTE </div>
+        <div className="overflow-x-auto my-4 max-h-64 border-2 ">
 
           <Table hoverable>
             <Table.Head className="sticky top-0 z-10">
@@ -440,10 +445,6 @@ export default function Home() {
           show={openModal}
         />}
 
-        <div className="grid grid-cols-2 p-4 gap-3">
-          <Button onClick={guardarDatos}> Guardar </Button>
-          <Button onClick={() => navegate.push("/admin/menu")}> Cancelar </Button>
-        </div>
 
         {errorClienteNoValido &&
 
@@ -455,8 +456,7 @@ export default function Home() {
 
         }
       </div>
-
-      <div className="flex flex-col w-full  gap-5 m-auto bg-white bg-opacity-60 sm:w-full rounded-2xl border-solid border-2 border-green-700 p-4">
+      <div className="flex flex-col w-full gap-5 m-auto bg-white bg-opacity-60 rounded-2xl border-solid border-2 border-green-700 p-4">
         <div>
           <p>Puntos Disponibles</p>
           <div className=" flex flex-col p-2 rounded-3xl border-4 border-blue-700 w-full text-center  text-4xl">
@@ -479,6 +479,7 @@ export default function Home() {
         </div>
 
       </div>
+
 
 
     </div>

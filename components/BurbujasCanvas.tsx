@@ -39,10 +39,11 @@ export default function BurbujasCanvas() {
             circles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 25 + 2,
-                dx: Math.random() * 5 - 1,
-                dy: Math.random() * 5 - 1,
-                color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`
+                radius: Math.random() * 50 + 2,
+                dx: Math.random() * 2 - 1,
+                dy: Math.random() * 2 - 1,
+                // color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.5)`
+                color: `radial-gradient(circle at 70% 30%,#ffffff7e,#d1eaef93,#a1d6df8c,#6cc2cf7a,#16acc083,#00b0cf85,#01519b7c,#0178998c,#00499c81)`
             });
         }
 
@@ -52,9 +53,24 @@ export default function BurbujasCanvas() {
 
             circles.forEach(circle => {
                 // Dibujar el círculo
+
+
+
+
+                const gradient = ctx.createRadialGradient(
+                    circle.x + (circle.radius * 0.25), circle.y - (circle.radius * 0.25), 0,  // Centro del gradiente
+                    circle.x + (circle.radius * 0.25), circle.y - (circle.radius * 0.25), circle.radius // Radio del gradiente
+                );
+
+                // Añadir colores al gradiente
+                gradient.addColorStop(0, "rgba(255, 255, 255, 0.8)"); // Centro
+                gradient.addColorStop(0.3, "rgba(209, 234, 239, 0.7)");
+                gradient.addColorStop(1, "rgba(22, 172, 192, 0.5)"); // Borde
+
+
                 ctx.beginPath();
                 ctx.arc(circle.x, circle.y, circle.radius, 0, Math.PI * 2);
-                ctx.fillStyle = circle.color;
+                ctx.fillStyle = gradient;
                 ctx.fill();
 
                 // Mover el círculo

@@ -34,7 +34,7 @@ export default function Component() {
 
     const processUserData = async () => {
 
-        console.log('hola desde process ..')
+
 
         setOpenModal(false);
 

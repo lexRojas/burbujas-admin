@@ -31,9 +31,6 @@ function ModalClientes(props: ModalClienteProps) {
 
         setformData(updateFormData)
 
-        console.log('------------------------------------')
-        console.log(updateFormData.cedula_filter)
-        console.log(updateFormData.nombre_filter)
 
         const filter = clientes.filter((cliente) => {
 
@@ -61,7 +58,7 @@ function ModalClientes(props: ModalClienteProps) {
             const response = await fetch('/api/clientesList');
             const clientes = await response.json();
 
-            console.log(clientes)
+
 
             setClientes(clientes)
             setFilter_Clientes(clientes)

@@ -17,12 +17,7 @@ export async function middleware(req: NextRequest) {
       const JWT_SECRET = process.env.JWT_SECRET;
 
       try {
-        const validate = await jwtVerify(
-          token!.value,
-          new TextEncoder().encode(JWT_SECRET!),
-        );
-
-        console.log(validate);
+        await jwtVerify(token!.value, new TextEncoder().encode(JWT_SECRET!));
       } catch (e) {
         console.error({ mensaje: "jwt expiro", error: e });
         return NextResponse.redirect(new URL("/admin", req.url));

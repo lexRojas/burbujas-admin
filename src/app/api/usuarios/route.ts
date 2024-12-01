@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "../../lib/prisma"; // Ajusta la ruta a tu archivo `prisma.ts`
+import { Prisma } from "@prisma/client";
 
 // Manejar solicitudes GET
 export async function GET() {
@@ -35,10 +36,23 @@ export async function POST(req: Request) {
 
     return NextResponse.json(usuario, { status: 201 });
   } catch (error) {
-    console.error("Error al crear usuario:", error);
-    throw error;
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      // Manejo de error de cliente duplicado
+      if (error.code === "P2002") {
+        // Prisma error code for unique constraint violation
+        return NextResponse.json(
+          { error: "El usuario con este login ya existe" },
+          { status: 409 }, // Conflict status code
+        );
+      }
+    }
+
+    // Log de error general
+    console.error("Error al crear un usuario", error);
+
+    // Respuesta genérica en caso de error inesperado
     return NextResponse.json(
-      { error: "Error interno al crear el usuario" },
+      { error: "No fue posible crear el usuario" },
       { status: 500 },
     );
   }

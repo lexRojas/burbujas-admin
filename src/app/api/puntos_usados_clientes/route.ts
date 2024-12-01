@@ -29,9 +29,6 @@ export async function POST(request: Request) {
     const body: PuntosUsadosCliente_interface = await request.json();
     const { cedula, fecha, montoCompra, puntosUsados } = body;
 
-    console.log("Body....");
-    console.log(body);
-
     if (!cedula || !fecha) {
       return NextResponse.json(
         { error: "Faltan cedula o fecha" },

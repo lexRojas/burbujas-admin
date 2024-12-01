@@ -52,21 +52,15 @@ export default function Signup() {
             });
 
             if (response.ok) {
-
-
-                const newCliente = await response.json();
-
-                console.log(newCliente)
-
                 showToastSuccess('Cliente incluido!')
                 setFormData(blankForm)
-
-
             } else {
 
-                const er = await response.json()
+                if (response.status == 409) {
 
-                console.log(er)
+                    showToastError("Cliente ya existe! ")
+                }
+
             }
 
         } catch (error) {
@@ -106,7 +100,6 @@ export default function Signup() {
             telefono: formData.telefono
         };
 
-        console.log(nuevoCliente)
 
         save_data(nuevoCliente)
     }

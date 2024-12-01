@@ -111,7 +111,7 @@ export default function Home() {
         vencido: false
       }
 
-      console.log(compras)
+
 
       try {
 
@@ -390,8 +390,13 @@ export default function Home() {
         </div>
 
       </div>
+      <div className="grid grid-cols-2 p-4 gap-3">
+        <Button onClick={guardarDatos}> Guardar </Button>
+        <Button onClick={() => navegate.push("/admin/menu")}> Cancelar </Button>
+      </div>
 
-      <div className="overflow-x-auto my-4 max-h-64 ">
+      <div className="text-center pt-4  font-bold text-red-800 "> HISTORICO DE VENTAS DEL CLIENTE </div>
+      <div className="overflow-x-auto my-4 max-h-64  border">
 
         <Table hoverable>
           <Table.Head className="sticky top-0 z-10">
@@ -429,10 +434,6 @@ export default function Home() {
         show={openModal}
       />}
 
-      <div className="grid grid-cols-2 p-4 gap-3">
-        <Button onClick={guardarDatos}> Guardar </Button>
-        <Button onClick={() => navegate.push("/admin/menu")}> Cancelar </Button>
-      </div>
 
       {errorClienteNoValido &&
 

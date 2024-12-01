@@ -89,16 +89,15 @@ export default function Home() {
 
       } else {
 
-
-        showToastError('3No fue posible crear el usuario, posiblemente esta ')
-
+        if (response.status == 409) {
+          showToastError('Login duplicado!! intente otro... ')
+        } else {
+          showToastError('No fue posible crear el usuario, posiblemente esta ')
+        }
 
       }
-    } catch (error) {
-
-
+    } catch {
       showToastError('No fue posible crear el usuario, posiblemente esta duplicando el login, contacte el administrador')
-      console.log('Error de red al enviar el formulario.', error);
     }
   }
 

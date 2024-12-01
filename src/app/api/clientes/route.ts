@@ -1,5 +1,6 @@
 // pages/api/clientes.ts
 
+import { Prisma } from "@prisma/client";
 import prisma from "../../lib/prisma";
 import { NextResponse } from "next/server";
 
@@ -23,9 +24,6 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { cedula, nombre, direccion, correo, telefono } = body;
 
-    console.log("salvando datos...");
-    console.log(body);
-
     if (!cedula || !nombre) {
       return NextResponse.json(
         { error: "Los campos cedula y nombre son obligatorios" },
@@ -44,14 +42,28 @@ export async function POST(req: Request) {
       },
     });
   } catch (error) {
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      // Manejo de error de cliente duplicado
+      if (error.code === "P2002") {
+        // Prisma error code for unique constraint violation
+        return NextResponse.json(
+          { error: "El cliente con esta cédula ya existe" },
+          { status: 409 }, // Conflict status code
+        );
+      }
+    }
+
+    // Log de error general
     console.error("Error al crear un cliente", error);
 
+    // Respuesta genérica en caso de error inesperado
     return NextResponse.json(
-      { error: "No fue posible crear cliente" },
+      { error: "No fue posible crear el cliente" },
       { status: 500 },
     );
   }
 }
+
 // Manejar otros métodos HTTP no soportados
 export async function DELETE() {
   return NextResponse.json(
