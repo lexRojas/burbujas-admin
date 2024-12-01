@@ -4,15 +4,14 @@ import "../globals.css";
 import Image from "next/image";
 import burbujas from "../../../public/burbujas-logo.webp"
 
-import whatsap from "../../../public/whatsapp.webp"
-import instagram from "../../../public/instagram.webp"
-import facebook from ".././../../public/facebook.webp"
+
 import "../Text.css"
-import { DarkThemeToggle } from "flowbite-react";
+
 
 
 import { Oswald, Roboto_Condensed } from 'next/font/google';
 import BurbujasCanvas from "../../../components/BurbujasCanvas";
+import Footer from "../../../components/Footer";
 
 const oswald = Oswald(
   {
@@ -81,22 +80,7 @@ export default function RootLayout({
 
           </main>
           <footer className="row-start-4 container mx-auto px-4 sm:px-6 lg:px-8  flex fex-row  pt-6 gap-6 flex-wrap items-center justify-center">
-            <div className="flex flex-shrink items-center gap-3">
-
-              <Image className="img-luminosa" alt="Whatsap" src={whatsap} style={{ width: 'clamp(10px,25px,25px)' }} ></Image>
-              <span className={`${roboto_condensed.className} text-gray-500 hover:text-blue-800`} style={{ fontSize: 'clamp(0.5rem, 2vw, 2rem)' }}> Whatsapp </span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Image className="img-luminosa" alt="Whatsap" src={facebook} style={{ width: 'clamp(10px,25px,25px)' }} ></Image>
-              <span className={`${roboto_condensed.className} text-gray-500 hover:text-blue-800`} style={{ fontSize: 'clamp(0.5rem, 2vw, 2rem)' }}> Facebook </span>
-            </div>
-            <div className="flex items-center gap-3">
-              <Image className="img-luminosa" alt="Whatsapp" src={instagram} style={{ width: 'clamp(10px,25px,25px)' }} ></Image>
-              <span className={`${roboto_condensed.className} text-gray-500 hover:text-blue-800`} style={{ fontSize: 'clamp(0.5rem, 2vw, 2rem)' }} > Instagram </span>
-            </div>
-            <DarkThemeToggle />
-
+            <Footer />
           </footer >
         </div>
       </body>
