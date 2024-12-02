@@ -10,7 +10,7 @@ import { Datepicker, Table } from "flowbite-react";
 import ModalClientes from "../../../../../components/ModalClientes";
 import { ClienteConRelaciones } from "../../../lib/modelos";
 import { Cliente } from "@prisma/client";
-import { convertDateToDDMMYYYY } from "@/tools";
+import { convertDateToDDMMYYYY } from "../../../../../scripts/tools";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
