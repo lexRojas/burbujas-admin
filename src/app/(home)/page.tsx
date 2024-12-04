@@ -15,7 +15,7 @@ export default function Home() {
   gsap.registerPlugin(useGSAP);
   gsap.registerPlugin(ScrollTrigger)
 
-  const contenedor = useRef<HTMLDivElement | null>(null)
+
   const btn1 = useRef<HTMLDivElement | null>(null)
   const btn2 = useRef<HTMLDivElement | null>(null)
   const btn3 = useRef<HTMLDivElement | null>(null)
@@ -23,38 +23,27 @@ export default function Home() {
   useGSAP(() => {
 
 
-    const pantallaSmall = window.innerHeight <= 768
-
     const timeline = gsap.timeline();
     // Animación para btn1
     timeline.from(btn1.current, {
-      duration: 2.5,
-      [pantallaSmall ? "x" : "y"]: [pantallaSmall ? -500 : -500],
-      background: "rgba(134, 4, 80, 0)",
-      boxShadow: "none",
-      color: "rgba(0, 0, 0, 0)",
-      ease: "bounce",
+      duration: 1,
+      scale: 0.5,
+      ease: "bounce.out",
     });
 
     // Animación para btn2
     timeline.from(btn2.current, {
-      duration: 2,
-      [pantallaSmall ? "x" : "y"]: [pantallaSmall ? -500 : -1500],
-      background: "rgba(2, 77, 6, 0)",
-      boxShadow: "none",
-      color: "rgba(0, 0, 0, 0)",
+      duration: 0.8,
+      scale: 0.5,
       ease: "bounce",
-    }, "<"); // "<" sincroniza con la animación anterior
+    }, 0.2); // "<" sincroniza con la animación anterior
 
     // Animación para btn3
     timeline.from(btn3.current, {
-      duration: 2,
-      [pantallaSmall ? "x" : "y"]: [pantallaSmall ? -500 : -1500],
-      background: "rgba(134, 104, 4, 0)",
-      boxShadow: "none",
-      color: "rgba(0, 0, 0, 0)",
+      duration: 1.1,
+      scale: 0.5,
       ease: "bounce",
-    }, "<"); // Sincroniza con la animación anterior
+    }, 0.2); // Sincroniza con la animación anterior
 
 
 
@@ -79,7 +68,7 @@ export default function Home() {
         </div>
         {/* <Animate></Animate> */}
       </div>
-      <div ref={contenedor} className="flex flex-col gap-3  md:flex-row ">
+      <div className="flex flex-col gap-3  md:flex-row ">
         <div ref={btn1} className="flex items-center 
                           justify-center  
                           p-5
