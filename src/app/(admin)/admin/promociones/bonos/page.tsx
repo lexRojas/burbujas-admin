@@ -311,7 +311,7 @@ export default function Home() {
                   <Table.Cell>{bono.id} </Table.Cell>
                   <Table.Cell>{bono.descripcion} </Table.Cell>
                   <Table.Cell>{convertDateToDDMMYYYY(bono.fecha_inicio)} </Table.Cell>
-                  <Table.Cell>{convertDateToDDMMYYYY(bono.fecha_inicio)} </Table.Cell>
+                  <Table.Cell>{convertDateToDDMMYYYY(bono.fecha_final)} </Table.Cell>
                   <Table.Cell>{bono.bono_puntos} </Table.Cell>
                   <Table.Cell> <input type="checkbox" name="chk" id={`${bono.id}`} checked={bono.activo} onChange={(e) => setIsChecked(e.target.checked, bono.id)} /> </Table.Cell>
                   <Table.Cell>
