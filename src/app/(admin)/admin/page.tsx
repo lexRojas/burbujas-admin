@@ -1,7 +1,7 @@
 'use client'
 
 import { ChangeEvent, useState } from "react";
-import { Label, HR, TextInput, Button } from "flowbite-react"
+import { Label, HR, TextInput, Button, Spinner } from "flowbite-react"
 import { Roboto_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 import { verificarAcceso } from "../../lib/data";
@@ -27,6 +27,8 @@ export default function Home() {
   const navegate = useRouter()
   const [accessDenegate, setAccessDenegate] = useState(false)
   const [userDontExist, setuserDontExist] = useState(false)
+  const [loading, setLoading] = useState(false)
+
 
   const [dataForm, setDataForm] = useState({
     login: '',
@@ -49,7 +51,7 @@ export default function Home() {
   const verificarUsuario = async () => {
 
 
-
+    setLoading(true)
 
     const response = await fetch(`/api/login/${dataForm.login}/${dataForm.password}`);
     const user = await response.json();
@@ -64,13 +66,14 @@ export default function Home() {
 
 
           navegate.push("/admin/menu")
+          setLoading(false)
         } else {
           setAccessDenegate(true)
         }
       })
 
     } else {
-
+      setLoading(false)
       setuserDontExist(true)
 
     }
@@ -121,6 +124,8 @@ export default function Home() {
           <Button onClick={verificarUsuario}> Ingresar </Button>
         </div>
       </fieldset>
+
+      {loading && <div> <Spinner />  </div>}
 
 
       {accessDenegate && <div className="flex flex-row p-3">
