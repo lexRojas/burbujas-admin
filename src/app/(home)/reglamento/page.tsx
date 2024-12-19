@@ -36,7 +36,7 @@ export default function Component() {
                         </p>
 
                         <p className="mb-2 text-gray-500 dark:text-gray-400 text-justify">
-                            1.4 <strong>Restricción en el canje:</strong> Si utilizas puntos para pagar una compra, no ganarás puntos adicionales por ese monto.Restricción en el canje: Si utilizas puntos para pagar una compra, no ganarás puntos adicionales por ese monto.
+                            1.4 <strong>Restricción en el canje:</strong> Si utilizas puntos para pagar una compra, no ganarás puntos adicionales por ese monto.
                         </p>
 
 

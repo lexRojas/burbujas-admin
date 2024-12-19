@@ -403,6 +403,7 @@ export default function Home() {
             <Table.HeadCell>Fecha</Table.HeadCell>
             <Table.HeadCell>Monto Compra</Table.HeadCell>
             <Table.HeadCell>Puntos</Table.HeadCell>
+            <Table.HeadCell>Origen</Table.HeadCell>
             <Table.HeadCell>Vencidos</Table.HeadCell>
             <Table.HeadCell>Editar</Table.HeadCell>
           </Table.Head>
@@ -414,6 +415,7 @@ export default function Home() {
                 <Table.Cell>{convertDateToDDMMYYYY(compras.fecha)} </Table.Cell>
                 <Table.Cell>{compras.montoCompra.toString()} </Table.Cell>
                 <Table.Cell>{compras.puntos.toString()} </Table.Cell>
+                <Table.Cell>{compras.origen_puntos} </Table.Cell>
                 <Table.Cell className={compras.vencido ? 'text-red-700 font-bold animate-pulse' : 'text-green-700 font-bold '} >{compras.vencido ? 'Vencido!' : 'Vigentes'} </Table.Cell>
                 <Table.Cell>
                   <p onClick={() => eliminarCompra(compras.id)}

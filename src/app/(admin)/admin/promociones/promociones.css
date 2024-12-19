@@ -1,0 +1,42 @@
+.menu-item {
+  display: block;
+  width: 100%; /* Ajusta el tamaño de la imagen según sea necesario */
+  height: 100%;
+
+  /* Fondo transparente */
+  background-color: transparent;
+
+  /* Agregar sombra al contorno */
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.5));
+
+  /* Elimina el fondo blanco (asegúrate de que la imagen tenga fondo transparente) */
+}
+
+.menu-item:hover {
+  /* Agregar sombra al contorno */
+  filter: drop-shadow(5px 5px 10px rgba(3, 0, 188, 0.7));
+  cursor: pointer;
+}
+
+.item-container {
+  @apply flex;
+  @apply flex-col;
+  @apply justify-center;
+  @apply text-center;
+
+  position: relative;
+  max-width: 10rem;
+  max-height: 10rem;
+  padding: 1rem;
+  background-color: whitesmoke;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+
+  border-radius: 1rem;
+}
+
+.item-container > span {
+  font-weight: 600;
+  margin-top: 0.3rem;
+}

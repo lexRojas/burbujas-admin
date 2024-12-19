@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `Cliente` MODIFY `fecha_ingreso` DATETIME(3) NULL DEFAULT CURRENT_TIMESTAMP(3);

@@ -45,7 +45,7 @@ export default function Home() {
           <span>Compras</span>
         </div>
         <div className="item-container">
-          <Image className="menu-item" src={menu_promocion} alt="promociones" />
+          <Image onClick={() => navegate.push("/admin/promociones")} className="menu-item" src={menu_promocion} alt="promociones" />
           <span>Promociones</span>
         </div>
         <div className="item-container">

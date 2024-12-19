@@ -35,6 +35,26 @@ export async function POST(req: Request) {
       data: { cedula, nombre, direccion, correo, telefono },
     });
 
+    const bonos = await prisma.bonos.findMany();
+    const today = new Date();
+    // Usar for...of para iterar y esperar las operaciones asíncronas
+    for (const bono of bonos) {
+      if (bono.fecha_inicio <= today && bono.fecha_final >= today) {
+        console.log(bono);
+        // Esperar la creación de las compras
+        await prisma.comprasCliente.create({
+          data: {
+            cedula: cedula,
+            fecha: today,
+            montoCompra: 0,
+            puntos: bono.bono_puntos,
+            origen_puntos: bono.descripcion,
+            vencido: false,
+          },
+        });
+      }
+    }
+
     return NextResponse.json(cliente, {
       status: 201,
       headers: {

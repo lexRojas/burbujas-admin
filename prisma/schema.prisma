@@ -10,9 +10,10 @@ datasource db {
 model Cliente {
   cedula      String    @id @unique
   nombre      String
-  direccion   String 
-  correo      String
-  telefono    String
+  direccion   String? 
+  correo      String?
+  telefono    String?
+  fecha_ingreso DateTime? @default(now())
   compras     ComprasCliente[]
   puntosUsados PuntosUsadosCliente[]
 }
@@ -23,6 +24,7 @@ model ComprasCliente {
   fecha       DateTime
   montoCompra Int
   puntos      Int
+  origen_puntos String?
   vencido     Boolean @default(false)
   cliente     Cliente   @relation(fields: [cedula], references: [cedula], onDelete: Cascade)
 }
@@ -42,5 +44,15 @@ model Usuario {
   login    String   @unique  
   password String
   perfil   String?
+  activo   Boolean @default(true)
+}
+
+
+model Bonos {
+  id       Int      @id @default(autoincrement())
+  descripcion  String
+  fecha_inicio DateTime
+  fecha_final DateTime
+  bono_puntos Int 
   activo   Boolean @default(true)
 }
