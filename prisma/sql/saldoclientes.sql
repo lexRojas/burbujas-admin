@@ -22,5 +22,4 @@
         FROM PuntosUsadosCliente  
         GROUP BY cedula
       ) c ON a.cedula = c.cedula
-      WHERE a.cedula = ?
       GROUP BY a.cedula, a.nombre, a.telefono, a.fecha_ingreso

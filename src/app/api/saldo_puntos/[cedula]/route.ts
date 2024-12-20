@@ -21,11 +21,20 @@ export async function GET(
     try {
       const saldoraw = await prisma.$queryRawTyped(saldopuntos(cedula));
 
-      const { nombre, total_puntos, total_puntos_usados, saldo } = saldoraw[0];
+      const {
+        nombre,
+        telefono,
+        fecha_ingreso,
+        total_puntos,
+        total_puntos_usados,
+        saldo,
+      } = saldoraw[0];
 
       const nuevoSaldo: typeSaldopuntos = {
         cedula: cedula,
         nombre: nombre,
+        telefono: telefono!,
+        fecha_ingreso: fecha_ingreso!,
         total_puntos: total_puntos.toNumber(),
         total_puntos_usados: total_puntos_usados.toNumber(),
         saldo: saldo.toNumber(),

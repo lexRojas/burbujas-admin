@@ -9,6 +9,7 @@ import menu_compras from '@/../public/images/menu_compras.webp'
 import menu_promocion from '@/../public/images/menu_promocion.webp'
 import menu_usuarios from '@/../public/images/menu_usuarios.webp'
 import menu_buy from '@/../public/images/menu_buy.webp'
+import menu_cliente from '@/../public/images/cliente.webp'
 
 
 import './menu.css'
@@ -39,6 +40,10 @@ export default function Home() {
         <div className="item-container">
           <Image onClick={() => navegate.push("/admin/registro")} className="menu-item " src={menu_usuarios} alt="usuarios" />
           <span>Usuarios</span>
+        </div>
+        <div className="item-container">
+          <Image onClick={() => navegate.push("/admin/cliente")} className="menu-item " src={menu_cliente} alt="clientes" />
+          <span>Clientes</span>
         </div>
         <div className="item-container">
           <Image onClick={() => navegate.push("/admin/ventas")} className="menu-item" src={menu_compras} alt="compras" />

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ChangeEvent, useState } from "react";
-import { Label, HR, TextInput, Button, FlowbiteTextInputTheme } from "flowbite-react"
+import { Label, HR, TextInput, Button, FlowbiteTextInputTheme, Spinner } from "flowbite-react"
 import { Roboto_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -45,6 +45,7 @@ export default function Home() {
   const [puntosDisponible, setPuntosDisponibles] = useState(0)
   const [puntosUsados, setPuntosUsados] = useState(0)
   const [puntosSaldo, setPuntosSaldo] = useState(0)
+  const [loading, setLoading] = useState(false)
 
 
   const handleDateChanges = (date: Date | null) => {
@@ -250,7 +251,7 @@ export default function Home() {
 
   const buscarCliente = async (cedula: string) => {
 
-
+    setLoading(true)
     try {
 
       const response = await fetch(`/api/clientes/${cedula}`)
@@ -275,6 +276,7 @@ export default function Home() {
       console.log(e)
 
     }
+    setLoading(false)
   }
 
   const eliminarCompra = async (id: number) => {
@@ -352,6 +354,7 @@ export default function Home() {
         <div className="m-2 block ">
           <p className={`${roboto.className} p-1  text-xl text-center  text-red-700 `}>REGISTRO DE CAMBIO DE PUNTOS</p>
         </div>
+
         <HR className="m-1 bg-black" />
         <div className="grid grid-row-[1fr_1fr] md:grid md:grid-cols-[max(15rem)_1fr] md:gap-3 ">
           <div className="mt-1 py-2">
@@ -411,6 +414,7 @@ export default function Home() {
         </div>
 
         <div className="text-center pt-4  font-bold text-blue-800 "> HISTORICO DE CANJES DEL CLIENTE </div>
+        {loading && <div className="text-center"> <Spinner size="xl" aria-label="Cargando..." color="purple" />  </div>}
         <div className="overflow-x-auto my-4 max-h-64 border-2 ">
 
           <Table hoverable>

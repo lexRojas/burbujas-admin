@@ -6,6 +6,7 @@ import { Cliente } from '@prisma/client';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation'
+import { Spinner } from 'flowbite-react/components/Spinner';
 
 //ruta: /singup 
 
@@ -13,6 +14,7 @@ export default function Signup() {
 
 
     const router = useRouter();
+    const [loading, setLoading] = useState(false)
 
 
 
@@ -43,6 +45,7 @@ export default function Signup() {
     const save_data = async (nuevoCliente: Cliente) => {
 
         try {
+            setLoading(true)
             const response = await fetch('/api/clientes', {
                 method: 'POST',
                 headers: {
@@ -62,10 +65,12 @@ export default function Signup() {
                 }
 
             }
+            setLoading(false)
 
         } catch (error) {
             console.log(error)
             showToastError('Cliente no fue incluido!')
+            setLoading(false)
 
         }
     }
@@ -103,6 +108,7 @@ export default function Signup() {
 
 
         save_data(nuevoCliente)
+
     }
 
     return (
@@ -148,7 +154,14 @@ export default function Signup() {
                     <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Teléfono</label>
                 </div>
                 <div className='grid gap-5 md:grid-cols-2 md:gap-6'>
-                    <button type="submit" className=" shadow shadow-neutral-800 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Suscribirme</button>
+                    <button type="submit" className=" shadow shadow-neutral-800 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+
+                        <div className='flex flex-row justify-center'>
+                            {loading && <div className="text-center"> <Spinner size="sm" aria-label="Cargando..." color="purple" />  </div>}
+                            <span className={loading ? 'pl-3' : ''} >Suscribirme</span>
+                        </div>
+
+                    </button>
 
 
                     <button className=" shadow shadow-neutral-800 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" onClick={() => router.push('/')}>Regresar</button>

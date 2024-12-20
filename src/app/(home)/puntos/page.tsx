@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Card, Label, Modal, TextInput } from "flowbite-react";
+import { Button, Card, Label, Modal, Spinner, TextInput } from "flowbite-react";
 import { useState, useEffect } from "react";
 import BubbleAnimation from "../../../../components/BurbujaPuntos";
 import { useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ export default function Component() {
     const [openModal, setOpenModal] = useState(true);
     const [verAnimacion, setVerAnimacion] = useState(false);
     const [verCaraTriste, setCaraTriste] = useState(false);
+    const [loading, setLoading] = useState(false)
 
     const [cedula, setCedula] = useState('');
     const [puntos, setPuntos] = useState(0);
@@ -35,7 +36,7 @@ export default function Component() {
     const processUserData = async () => {
 
 
-
+        setLoading(true)
         setOpenModal(false);
 
         const response = await fetch(`/api/saldo_puntos/${cedula}`)
@@ -68,7 +69,7 @@ export default function Component() {
             setCaraTriste(true)
 
         }
-
+        setLoading(false)
 
 
     }
@@ -112,6 +113,8 @@ export default function Component() {
             </Modal>
 
             <Card className=" w-72 h-auto  max-w-sm">
+
+                {loading && <div className="text-center"> <Spinner size="xl" aria-label="Cargando..." color="purple" />  </div>}
 
                 {verAnimacion && <BubbleAnimation puntos={puntos} />}
 

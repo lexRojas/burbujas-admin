@@ -1,7 +1,7 @@
 'use client'
 
 import React, { ChangeEvent, useState } from "react";
-import { Label, HR, TextInput, Button, FlowbiteTextInputTheme } from "flowbite-react"
+import { Label, HR, TextInput, Button, FlowbiteTextInputTheme, Spinner } from "flowbite-react"
 import { Roboto_Condensed } from "next/font/google";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -44,6 +44,7 @@ export default function Home() {
   const [openModal, setOpenModal] = useState(false);
   const [comprasCliente, setcomprasCliente] = useState<ClienteConRelaciones | undefined>();
   const [fechaselected, SetFechaSelected] = useState<Date | null>(new Date())
+  const [loading, setLoading] = useState(false)
 
 
   const handleDateChanges = (date: Date | null) => {
@@ -250,7 +251,7 @@ export default function Home() {
 
   const buscarCliente = async (cedula: string) => {
 
-
+    setLoading(true)
     try {
 
       const response = await fetch(`/api/clientes/${cedula}`)
@@ -272,6 +273,7 @@ export default function Home() {
       console.log(e)
 
     }
+    setLoading(false)
   }
 
   const eliminarCompra = async (id: number) => {
@@ -396,6 +398,7 @@ export default function Home() {
       </div>
 
       <div className="text-center pt-4  font-bold text-red-800 "> HISTORICO DE VENTAS DEL CLIENTE </div>
+      {loading && <div className="text-center"> <Spinner size="xl" aria-label="Cargando..." color="purple" />  </div>}
       <div className="overflow-x-auto my-4 max-h-64  border">
 
         <Table hoverable>

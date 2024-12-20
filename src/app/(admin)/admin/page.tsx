@@ -125,7 +125,7 @@ export default function Home() {
         </div>
       </fieldset>
 
-      {loading && <div> <Spinner />  </div>}
+      {loading && <div className="text-center"> <Spinner size="xl" aria-label="Cargando..." color="purple" />  </div>}
 
 
       {accessDenegate && <div className="flex flex-row p-3">
