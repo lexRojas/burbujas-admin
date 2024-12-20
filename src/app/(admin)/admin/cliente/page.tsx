@@ -114,8 +114,9 @@ export default function Home() {
   return (
     <div className="flex flex-col max-w-6xl m-auto bg-white bg-opacity-60 sm:w-full rounded-md border-solid border-2 border-green-700 p-4">
       <ToastContainer />
-      <div className="m-2 block ">
-        <p className={`${roboto.className} p-1  text-xl text-center  text-blue-700 `}>LISTA DE CLIENTES</p>
+      <div className="flex mb-2 ">
+        <p className={`${roboto.className} mx-auto p-1  self-center text-xl text-center  text-blue-700 `}>LISTA DE CLIENTES</p>
+        <Button className="ml-0" onClick={() => navegate.push("/admin/menu")}> Regresar</Button>
       </div>
       <HR className="m-1 bg-black" />
 
