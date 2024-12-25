@@ -67,7 +67,7 @@ export async function POST(req: Request) {
       if (error.code === "P2002") {
         // Prisma error code for unique constraint violation
         return NextResponse.json(
-          { error: "El cliente con esta cédula ya existe" },
+          { error: "El cliente con esta cédula ya existe..." },
           { status: 409 }, // Conflict status code
         );
       }
