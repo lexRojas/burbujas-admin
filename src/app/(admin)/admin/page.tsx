@@ -50,32 +50,37 @@ export default function Home() {
 
   const verificarUsuario = async () => {
 
+    try {
+      setLoading(true)
 
-    setLoading(true)
+      const response = await fetch(`/api/login/${dataForm.login}/${dataForm.password}`);
+      const user = await response.json();
+      if (user) {
 
-    const response = await fetch(`/api/login/${dataForm.login}/${dataForm.password}`);
-    const user = await response.json();
-    if (user) {
+        console.log('user')
+        verificarAcceso(dataForm.password, user.password).then((acceso) => {
 
-      verificarAcceso(dataForm.password, user.password).then((acceso) => {
+          console.log(acceso)
 
-        if (acceso) {
+          if (acceso) {
+            navegate.push("/admin/menu")
+            setLoading(false)
+          } else {
 
+            setAccessDenegate(true)
+          }
+        })
 
+      } else {
+        console.log('no user')
+        setLoading(false)
+        setuserDontExist(true)
 
+      }
+    } catch (error) {
 
-
-          navegate.push("/admin/menu")
-          setLoading(false)
-        } else {
-          setAccessDenegate(true)
-        }
-      })
-
-    } else {
-      setLoading(false)
-      setuserDontExist(true)
-
+      setAccessDenegate(true)
+      console.log(error)
     }
 
   }

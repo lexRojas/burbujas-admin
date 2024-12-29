@@ -23,7 +23,7 @@ export async function verificarAcceso(
     const isMatch = await bcrypt.compare(password, hashedPassword);
     return isMatch;
   } catch (error) {
-    console.log(error);
+    console.log({ error: error });
     return null;
   }
 }
