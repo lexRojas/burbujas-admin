@@ -8,9 +8,13 @@ export async function middleware(req: NextRequest) {
 
   const url = req.url;
 
+  console.log(url);
+
   if (url.endsWith("/admin")) {
     return NextResponse.next();
   } else {
+    console.log("hay cookie...");
+    console.log(hasCookie);
     if (hasCookie) {
       const token = cookieStore.get("access_token");
 
